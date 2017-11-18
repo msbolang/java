@@ -1,9 +1,14 @@
 //多态的好处是可扩展性强  动态绑定类  试想一下 下面的程序 扩展出一只鸟 是否很方便  
 //扩展出一只鸟只需要加一个鸟的类 在void main中new出来就可以了，无需改其他代码
+//多态有三个必要条件
+//1. 要有基础
+//2. 要有重写
+//3. 父类引用调用子类对象
+
 class Animal {
     private String name;
     Animal(String name){
-     this.name = name;
+    this.name = name;
     };
     
     public void enjoy() {
@@ -24,7 +29,7 @@ class Dog extends Animal {
 
 class Cat extends Animal {
     private String furColor;
-    Cat(String s,String c){
+    Cat(String s,String c) {
         super(s);
         this.furColor = c;
     }
@@ -36,7 +41,7 @@ class Cat extends Animal {
 //扩展一只鸟
 class Bird extends Animal {
     private String furColor;
-    Bird(String s,String c){
+    Bird(String s,String c) {
         super(s);
         this.furColor = c;
     }
@@ -45,12 +50,11 @@ class Bird extends Animal {
     }
 }
 
-
 //有个小女孩 她有一只Animal类型的宠物 
 class Lady {
     private String name;
     Animal pet;
-    Lady(String n,Animal c){
+    Lady(String n,Animal c) {
         this.name = n;
         this.pet = c;
     }
@@ -72,5 +76,4 @@ public class Polymorphic {
         l2.myPetEnjoy();//狗的叫声
         l3.myPetEnjoy();//扩展一只鸟
     }
-
 } 

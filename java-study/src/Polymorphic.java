@@ -33,6 +33,19 @@ class Cat extends Animal {
     }
 }
 
+//扩展一只鸟
+class Bird extends Animal {
+    private String furColor;
+    Bird(String s,String c){
+        super(s);
+        this.furColor = c;
+    }
+    public void enjoy() {
+        System.out.println("鸟的叫声");
+    }
+}
+
+
 //有个小女孩 她有一只Animal类型的宠物 
 class Lady {
     private String name;
@@ -51,10 +64,13 @@ public class Polymorphic {
     public static void main(String[] args) {
         Cat c = new Cat("catName","red");
         Dog d = new Dog("dogName","yellow");
+        Bird b = new Bird("birdName","block"); //扩展一只鸟
         Lady l1 = new Lady("lili",c);
         Lady l2 = new Lady("luce",d);
+          Lady l3 = new Lady("li",b);//扩展一只鸟
         l1.myPetEnjoy();//猫的叫声
         l2.myPetEnjoy();//狗的叫声
+        l3.myPetEnjoy();//扩展一只鸟
     }
 
 } 

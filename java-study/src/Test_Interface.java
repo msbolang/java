@@ -29,7 +29,7 @@ public interface Runner {
 //定义singer接口
 
 //其他说明： 类和类之间可以相互继承  接口和接口之间也可以相互继承 
-// class A extends B implements C,D {}  还可以这样声明，  A 类继承B类 并且实现C和D接口
+// class A extends B implements C,D {}  还可以这样声明，  A 类继承B类 并且实现C和D接口  类和接口之间 只能用类去实现接口 不能用接口继承类
 interface Singer {
     public void sing();
     public void sleep();
@@ -91,12 +91,21 @@ class  Doing {
         this.T = t;
     } 
        
-    public void sing() {
-        T.sing();
+    public void sing(Singer S) {
+        S.sing();
     }
-    public void sleep() {
+    public void sleep(Singer S) {
         S.sleep();
     }
+    //方法重载 
+    public void sing(Teacher T) {
+        T.sing();
+    }
+    //方法重载 
+    public void sleep(Teacher T) {
+        T.sleep();
+    }
+    
     
     public void tEnght() {
         T.teachEnght();
@@ -122,13 +131,13 @@ public class Test_Interface { //动态绑定
           //用多态去 实现
      
           Doing d1 = new Doing(s);//实现多态的条件
-//          d1.sing();
+          d1.sing(s);
         //  d1.tEnght();//报错 d1传入的学生 类的s 学生类没有实现Teaching接口 所以没有tEnght方法 编译时不会报错 运行时就报错
           Doing d2 = new Doing(t);
-        //  d2.sing(); //报错 因为Doing里面没有写techer的sing调用 怎样实现？
+          d2.sing(t); //报错 因为Doing里面没有写techer的sing调用 怎样实现？ 用方法重载  
         //  Doing d22 = (Student) d2; //怎样强制转换？？？？？？
-//          d2.tEnght();//传入的是Teacher类的 t   Teacher类实现了Teaching接口 拥有tEnght方法
-//          d2.tMathematics();
+          d2.tEnght();//传入的是Teacher类的 t   Teacher类实现了Teaching接口 拥有tEnght方法
+          d2.tMathematics();
      
     }
   
